@@ -1,0 +1,10 @@
+Audi A8;2.2;2012
+Toyota;0.8;2015
+Honda;1.2;2007
+Mercedes;1.0;2016
+Buick;2.0;1980
+Tesla;0.0;2024
+Toyota;0.8;2024
+Ford;1.5;2019
+BMW;1.0;2024
+Chevrolet;2.0;2020
