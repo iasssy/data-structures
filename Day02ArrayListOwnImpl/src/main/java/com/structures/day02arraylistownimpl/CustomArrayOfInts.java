@@ -15,17 +15,6 @@ public class CustomArrayOfInts {
 
     public void deleteByIndex(int index) {
         // check if index exists
-
-        /*
-        int[] dataNew = new int[data.length - 1]; // capacity should be changed or remains the same???
-        for (int i = 0; i < index; i++) {
-            dataNew[i] = data[i];
-        }
-        for (int j = index + 1; j < size; j++) {
-            dataNew[j - 1] = data[j];
-        }
-        data = dataNew;
-         */
         if (!throwIndexOfBounds(index)) {
             for (int i = index; i < size - 1; i++) {
                 data[i] = data[i + 1];
@@ -69,23 +58,27 @@ public class CustomArrayOfInts {
     }
 
     public int[] getSlice(int startIdx, int length) { // may throw ArrayIndexOutOfBoundsException
-        if (startIdx > 0 && startIdx < size & (startIdx + length) <= size) { // (size - length - startIdx - 1)>=0
+
+        if (!throwIndexOfBoundsSlice(startIdx, length)) {
             int[] slice = new int[length];
             for (int i = 0; i < length; i++) {
                 slice[i] = data[startIdx + i];
             }
             return slice;
-        } else System.out.println("Invalid slice bounds");
+        }
         return null;
-
     }
 
-    /*
-       public int[] toArray() { // ensure no reference leak
 
-       }
+    public int[] toArray() { // ensure no reference leak
+        int[] dataNew = new int[size];
+        // System.arraycopy(data, 0, dataNew, 0, size);
+        for (int i = 0; i < size; i++) {
+            dataNew[i] = data[i];
+        }
+        return dataNew;
+    }
 
-     */
 
     @Override
     public String toString() {
@@ -128,8 +121,8 @@ public class CustomArrayOfInts {
         if (slice != null) {
             System.out.print("Slice: ");
             String sliceString = "[";
-            for (int i=0; i< slice.length; i++ ) {
-                sliceString +=slice[i]+"";
+            for (int i = 0; i < slice.length; i++) {
+                sliceString += slice[i] + "";
                 if (i < slice.length - 1) {
                     sliceString += ", ";
                 }
@@ -156,6 +149,15 @@ public class CustomArrayOfInts {
         if (index < 0 || index >= size) {
             // throw new ArrayIndexOutOfBoundsException("Invalid index");
             System.out.println("Invalid index");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean throwIndexOfBoundsSlice(int startIdx, int length) {
+        if (data == null || size == 0 || startIdx < 0 || startIdx >= size || (startIdx + length) > size) {
+            // throw new ArrayIndexOutOfBoundsException("Invalid index");
+            System.out.println("Invalid interval to be sliced");
             return true;
         }
         return false;

@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.structures</groupId>
-    <artifactId>Day02ArrayListOwnImpl</artifactId>
+    <artifactId>Day04CustomHashMap</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Day02ArrayListOwnImpl</name>
-    <description>Day02ArrayListOwnImpl</description>
+    <name>Day04CustomHashMap</name>
+    <description>Day04CustomHashMap</description>
     <url/>
     <licenses>
         <license/>
@@ -38,17 +38,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

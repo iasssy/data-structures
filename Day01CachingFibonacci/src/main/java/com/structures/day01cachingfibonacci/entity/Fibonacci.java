@@ -15,6 +15,10 @@ public class Fibonacci {
     private int fibsCompCount = 2; // may not be needed
 
     public long getNthFib(int n) {
+        if (n<0){
+            System.out.println("No negative fibonacci number exists.");
+            return 0;
+        }
         if (isCacheOn && fibsCached.containsKey(n)) {
             return fibsCached.get(n);
         }
@@ -24,6 +28,7 @@ public class Fibonacci {
             fibsCompCount = fibsCached.size();
         }
         return result;
+
     }
 
     private long computeNthFib(int n) {
@@ -67,13 +72,13 @@ public class Fibonacci {
 
         // Test with cache enabled
         System.out.println("With caching:");
+        System.out.println(fibCached.getNthFib(-2));
         System.out.println("Fib(10) = " + fibCached.getNthFib(10));
         System.out.println("Computed count: " + fibCached.getCountOfFibsComputed());
         System.out.println("Cached values: " + fibCached.toString());
 
         System.out.println();
 
-        // Test with cache disabled
         System.out.println("Without caching:");
         System.out.println("Fib(10) = " + fibNonCached.getNthFib(10));
         System.out.println("Computed count: " + fibNonCached.getCountOfFibsComputed());
